@@ -118,7 +118,7 @@ namespace MBASistemaDeGestion
             frm.ShowDialog();
         }
 
-        private void añoFinancieroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AñoFiscalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAñoFiscal frm = new frmAñoFiscal();
             frm.ShowDialog();

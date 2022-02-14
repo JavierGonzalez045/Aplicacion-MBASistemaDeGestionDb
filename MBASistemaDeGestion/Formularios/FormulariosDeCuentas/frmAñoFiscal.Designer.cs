@@ -35,18 +35,18 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvListaDelAñoFinanciero = new System.Windows.Forms.DataGridView();
+            this.dgvListaDelAñoFiscal = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBusqueda = new System.Windows.Forms.TextBox();
-            this.textTituloDelAñoFinanciero = new System.Windows.Forms.TextBox();
+            this.textTituloDelAñoFiscal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.proveedor_de_errores = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaDelAñoFinanciero)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaDelAñoFiscal)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.proveedor_de_errores)).BeginInit();
             this.SuspendLayout();
@@ -106,22 +106,22 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             this.panel1.Size = new System.Drawing.Size(565, 12);
             this.panel1.TabIndex = 25;
             // 
-            // dgvListaDelAñoFinanciero
+            // dgvListaDelAñoFiscal
             // 
-            this.dgvListaDelAñoFinanciero.AllowUserToAddRows = false;
-            this.dgvListaDelAñoFinanciero.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvListaDelAñoFinanciero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaDelAñoFinanciero.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvListaDelAñoFinanciero.Location = new System.Drawing.Point(16, 213);
-            this.dgvListaDelAñoFinanciero.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvListaDelAñoFinanciero.MultiSelect = false;
-            this.dgvListaDelAñoFinanciero.Name = "dgvListaDelAñoFinanciero";
-            this.dgvListaDelAñoFinanciero.ReadOnly = true;
-            this.dgvListaDelAñoFinanciero.RowHeadersVisible = false;
-            this.dgvListaDelAñoFinanciero.RowHeadersWidth = 51;
-            this.dgvListaDelAñoFinanciero.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaDelAñoFinanciero.Size = new System.Drawing.Size(565, 457);
-            this.dgvListaDelAñoFinanciero.TabIndex = 24;
+            this.dgvListaDelAñoFiscal.AllowUserToAddRows = false;
+            this.dgvListaDelAñoFiscal.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvListaDelAñoFiscal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaDelAñoFiscal.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvListaDelAñoFiscal.Location = new System.Drawing.Point(16, 213);
+            this.dgvListaDelAñoFiscal.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListaDelAñoFiscal.MultiSelect = false;
+            this.dgvListaDelAñoFiscal.Name = "dgvListaDelAñoFiscal";
+            this.dgvListaDelAñoFiscal.ReadOnly = true;
+            this.dgvListaDelAñoFiscal.RowHeadersVisible = false;
+            this.dgvListaDelAñoFiscal.RowHeadersWidth = 51;
+            this.dgvListaDelAñoFiscal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaDelAñoFiscal.Size = new System.Drawing.Size(565, 457);
+            this.dgvListaDelAñoFiscal.TabIndex = 24;
             // 
             // contextMenuStrip1
             // 
@@ -147,13 +147,13 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             this.textBusqueda.TabIndex = 18;
             this.textBusqueda.TextChanged += new System.EventHandler(this.textBusqueda_TextChanged);
             // 
-            // textTituloDelAñoFinanciero
+            // textTituloDelAñoFiscal
             // 
-            this.textTituloDelAñoFinanciero.Location = new System.Drawing.Point(225, 26);
-            this.textTituloDelAñoFinanciero.Margin = new System.Windows.Forms.Padding(4);
-            this.textTituloDelAñoFinanciero.Name = "textTituloDelAñoFinanciero";
-            this.textTituloDelAñoFinanciero.Size = new System.Drawing.Size(355, 22);
-            this.textTituloDelAñoFinanciero.TabIndex = 16;
+            this.textTituloDelAñoFiscal.Location = new System.Drawing.Point(225, 26);
+            this.textTituloDelAñoFiscal.Margin = new System.Windows.Forms.Padding(4);
+            this.textTituloDelAñoFiscal.Name = "textTituloDelAñoFiscal";
+            this.textTituloDelAñoFiscal.Size = new System.Drawing.Size(355, 22);
+            this.textTituloDelAñoFiscal.TabIndex = 16;
             // 
             // label2
             // 
@@ -221,9 +221,9 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvListaDelAñoFinanciero);
+            this.Controls.Add(this.dgvListaDelAñoFiscal);
             this.Controls.Add(this.textBusqueda);
-            this.Controls.Add(this.textTituloDelAñoFinanciero);
+            this.Controls.Add(this.textTituloDelAñoFiscal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -232,8 +232,8 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             this.Name = "frmAñoFiscal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Año Fiscal";
-            this.Load += new System.EventHandler(this.frmAñoFinanciero_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaDelAñoFinanciero)).EndInit();
+            this.Load += new System.EventHandler(this.frmAñoFiscal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaDelAñoFiscal)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.proveedor_de_errores)).EndInit();
             this.ResumeLayout(false);
@@ -248,11 +248,11 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvListaDelAñoFinanciero;
+        private System.Windows.Forms.DataGridView dgvListaDelAñoFiscal;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.TextBox textBusqueda;
-        private System.Windows.Forms.TextBox textTituloDelAñoFinanciero;
+        private System.Windows.Forms.TextBox textTituloDelAñoFiscal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider proveedor_de_errores;

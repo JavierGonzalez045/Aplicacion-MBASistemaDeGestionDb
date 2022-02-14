@@ -575,8 +575,8 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
             string titulodelacompra = "Compra de " + labelProveedor.Text.Trim();
             float montototaldelacompra = 0;
             float.TryParse(labelMontoRestante.Text.Trim(), out montototaldelacompra);
-            string AñoFinanciero_ID = (AccesoABaseDeDatos.Seleccionar("SELECT TOP 1 AñoFinancieroID FROM TablaAñoFinanciero WHERE EstaActivo = 1") != null ? Convert.ToString(AccesoABaseDeDatos.Seleccionar("SELECT TOP 1 AñoFinancieroID FROM TablaAñoFinanciero WHERE EstaActivo = 1").Rows[0][0]) : string.Empty);
-            if (string.IsNullOrEmpty(AñoFinanciero_ID))
+            string AñoFiscal_ID = (AccesoABaseDeDatos.Seleccionar("SELECT TOP 1 AñoFiscalID FROM TablaAñoFiscal WHERE EstaActivo = 1") != null ? Convert.ToString(AccesoABaseDeDatos.Seleccionar("SELECT TOP 1 AñoFiscalID FROM TablaAñoFiscal WHERE EstaActivo = 1").Rows[0][0]) : string.Empty);
+            if (string.IsNullOrEmpty(AñoFiscal_ID))
             {
                 MessageBox.Show("Debe establecer el año fiscal");
                 frmAñoFiscal frm = new frmAñoFiscal();
@@ -633,14 +633,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
                 if(controlDeCuenta_ID == "13")  // Costo directo
                 {
                     titulodetransaccion = "Compra de " + labelProveedor.Text.Trim();
-                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID,NoDeFactura, Usuario_ID,Credito,Debito,FechaDeLaTransaccion,TituloDeLaTransaccion) VALUES "+
+                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID,NoDeFactura, Usuario_ID,Credito,Debito,FechaDeLaTransaccion,TituloDeLaTransaccion) VALUES "+
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, "2", "3", "1", nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, "2", "3", "1", nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
 
                     titulodetransaccion = labelProveedor.Text.Trim() + " , Pago de compra pendiente";
-                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID,NoDeFactura, Usuario_ID,Credito,Debito,FechaDeLaTransaccion,TituloDeLaTransaccion) VALUES " +
+                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID,NoDeFactura, Usuario_ID,Credito,Debito,FechaDeLaTransaccion,TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
 
                     AccesoABaseDeDatos.Insertar(querycredito);
                     AccesoABaseDeDatos.Insertar(querydebito);
@@ -648,14 +648,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
                 else if (controlDeCuenta_ID == "3") // Cuentas por pagar
                 {
                     titulodetransaccion = "Pago a " + labelProveedor.Text.Trim();
-                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, "1", "1", "1", nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, "1", "1", "1", nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
 
                     titulodetransaccion = labelProveedor.Text.Trim() + " , Pago de compra realizado exitosamente";
-                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
 
                     AccesoABaseDeDatos.Insertar(querycredito);
                     AccesoABaseDeDatos.Insertar(querydebito);
@@ -663,14 +663,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
                 else if (controlDeCuenta_ID == "2") // Cuentas por cobrar
                 {
                     titulodetransaccion = "Obtener productos pagados de " + labelProveedor.Text.Trim();
-                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
 
                     titulodetransaccion = labelProveedor.Text.Trim() + " , Productos pagados obtenidos";
-                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, "3", "13", subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, "3", "13", subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
 
                     AccesoABaseDeDatos.Insertar(querycredito);
                     AccesoABaseDeDatos.Insertar(querydebito);
@@ -678,14 +678,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
                 else if (controlDeCuenta_ID == "24") // Devolver compra
                 {
                     titulodetransaccion = "Devolver productos a " + labelProveedor.Text.Trim();
-                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
 
                     titulodetransaccion = labelProveedor.Text.Trim() + " , Productos pagados obtenidos";
-                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, "1", "2", "1", nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, "1", "2", "1", nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
 
                     AccesoABaseDeDatos.Insertar(querycredito);
                     AccesoABaseDeDatos.Insertar(querydebito);
@@ -694,14 +694,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
                 else if (controlDeCuenta_ID == "23") // Productos de capital
                 {
                     titulodetransaccion = "Propietario de inversión en productos " + labelProveedor.Text.Trim();
-                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, cuentaPrincipal_ID, controlDeCuenta_ID, subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, Convert.ToString(filadelproducto.Cells[9].Value), "0", DateTime.Now, titulodetransaccion);
 
                     titulodetransaccion = labelProveedor.Text.Trim() + " , Productos obtenidos del propietario";
-                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                    querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                         " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        AñoFinanciero_ID, "3", "13", subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
+                        AñoFiscal_ID, "3", "13", subControlDeCuenta_ID, nofactura, UsuarioActual.UsuarioID, "0", Convert.ToString(filadelproducto.Cells[9].Value), DateTime.Now, titulodetransaccion);
                     AccesoABaseDeDatos.Insertar(querycredito);
                     AccesoABaseDeDatos.Insertar(querydebito);
                 }
@@ -721,14 +721,14 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCompra
             if(checkBoxFacturaDePago.Checked == true)
             {
                 string titulodetransaccion = "Pago a " + labelProveedor.Text.Trim();
-                string querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                string querycredito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                     " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                    AñoFinanciero_ID, "1", "1", "1", nofactura, UsuarioActual.UsuarioID, montototaldelacompra, "0", DateTime.Now, titulodetransaccion);
+                    AñoFiscal_ID, "1", "1", "1", nofactura, UsuarioActual.UsuarioID, montototaldelacompra, "0", DateTime.Now, titulodetransaccion);
 
                 titulodetransaccion = labelProveedor.Text.Trim() + " , Pago de compra realizado exitosamente";
-                string querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFinanciero_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
+                string querydebito = string.Format("INSERT INTO TablaDeTransacciones (AñoFiscal_ID, CuentaPrincipal_ID, ControlDeCuenta_ID, SubControlDeCuenta_ID, NoDeFactura, Usuario_ID, Credito, Debito, FechaDeLaTransaccion, TituloDeLaTransaccion) VALUES " +
                     " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                    AñoFinanciero_ID, "2", "3", "1", nofactura, UsuarioActual.UsuarioID, "0", montototaldelacompra, DateTime.Now, titulodetransaccion);
+                    AñoFiscal_ID, "2", "3", "1", nofactura, UsuarioActual.UsuarioID, "0", montototaldelacompra, DateTime.Now, titulodetransaccion);
                 AccesoABaseDeDatos.Insertar(querycredito);
                 AccesoABaseDeDatos.Insertar(querydebito);
                 mensajecompraexitosa = mensajecompraexitosa + "\nCon Factura De Pago.";

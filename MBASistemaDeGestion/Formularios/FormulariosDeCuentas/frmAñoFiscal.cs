@@ -24,32 +24,32 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             DataTable tabladedatos = new DataTable();
             if (string.IsNullOrEmpty(busqueda_a_realizar) && string.IsNullOrWhiteSpace(busqueda_a_realizar))
             {
-                query = "SELECT AñoFinancieroID,AñoFinanciero,FechaDeInicio,FechaFinal,EstaActivo FROM TablaAñoFinanciero";
+                query = "SELECT AñoFiscalID,AñoFiscal,FechaDeInicio,FechaFinal,EstaActivo FROM TablaAñoFiscal";
             }
             else
             {
-                query = "SELECT AñoFinancieroID,AñoFinanciero,FechaDeInicio,FechaFinal,EstaActivo FROM TablaAñoFinanciero WHERE AñoFinanciero LIKE '%" + busqueda_a_realizar + "%'";
+                query = "SELECT AñoFiscalID,AñoFiscal,FechaDeInicio,FechaFinal,EstaActivo FROM TablaAñoFiscal WHERE AñoFiscal LIKE '%" + busqueda_a_realizar + "%'";
             }
             tabladedatos = AccesoABaseDeDatos.Seleccionar(query);
             if (tabladedatos != null)
             {
                 if (tabladedatos.Rows.Count > 0)
                 {
-                    dgvListaDelAñoFinanciero.DataSource = tabladedatos;
-                    dgvListaDelAñoFinanciero.Columns[0].Width = 100;
-                    dgvListaDelAñoFinanciero.Columns[1].Width = 150;
-                    dgvListaDelAñoFinanciero.Columns[2].Width = 170;
-                    dgvListaDelAñoFinanciero.Columns[3].Width = 120;
-                    dgvListaDelAñoFinanciero.Columns[4].Width = 80;
+                    dgvListaDelAñoFiscal.DataSource = tabladedatos;
+                    dgvListaDelAñoFiscal.Columns[0].Width = 100;
+                    dgvListaDelAñoFiscal.Columns[1].Width = 150;
+                    dgvListaDelAñoFiscal.Columns[2].Width = 170;
+                    dgvListaDelAñoFiscal.Columns[3].Width = 120;
+                    dgvListaDelAñoFiscal.Columns[4].Width = 80;
                 }
                 else
                 {
-                    dgvListaDelAñoFinanciero.DataSource = null;
+                    dgvListaDelAñoFiscal.DataSource = null;
                 }
             }
             else
             {
-                dgvListaDelAñoFinanciero.DataSource = null;
+                dgvListaDelAñoFiscal.DataSource = null;
             }
         }
 
@@ -58,7 +58,7 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             btnEditar.Enabled = true;
             btnCancelar.Enabled = true;
             btnGuardar.Enabled = false;
-            dgvListaDelAñoFinanciero.Enabled = false;
+            dgvListaDelAñoFiscal.Enabled = false;
             textBusqueda.Enabled = false;
             checkBoxActivo.Enabled = true;
         }
@@ -68,7 +68,7 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
             btnEditar.Enabled = false;
             btnCancelar.Enabled = false;
             btnGuardar.Enabled = true;
-            dgvListaDelAñoFinanciero.Enabled = true;
+            dgvListaDelAñoFiscal.Enabled = true;
             textBusqueda.Enabled = true;
             LlenarCuadro("");
             checkBoxActivo.Enabled = false;
@@ -78,10 +78,10 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
         private void RestablecerFormulario()
         {
             dateTimePickerFechaInicial.Value = DateTime.Now;
-            textTituloDelAñoFinanciero.Clear();
+            textTituloDelAñoFiscal.Clear();
         }
 
-        private void frmAñoFinanciero_Load(object sender, EventArgs e)
+        private void frmAñoFiscal_Load(object sender, EventArgs e)
         {
             LlenarCuadro("");
         }
@@ -98,15 +98,15 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvListaDelAñoFinanciero != null)
+            if (dgvListaDelAñoFiscal != null)
             {
-                if (dgvListaDelAñoFinanciero.Rows.Count > 0)
+                if (dgvListaDelAñoFiscal.Rows.Count > 0)
                 {
-                    if (dgvListaDelAñoFinanciero.SelectedRows.Count == 1)
+                    if (dgvListaDelAñoFiscal.SelectedRows.Count == 1)
                     {
-                        textTituloDelAñoFinanciero.Text = Convert.ToString(dgvListaDelAñoFinanciero.CurrentRow.Cells[1].Value);
-                        dateTimePickerFechaInicial.Value = Convert.ToDateTime(dgvListaDelAñoFinanciero.CurrentRow.Cells[2].Value);
-                        checkBoxActivo.Checked = Convert.ToBoolean(dgvListaDelAñoFinanciero.CurrentRow.Cells[4].Value);
+                        textTituloDelAñoFiscal.Text = Convert.ToString(dgvListaDelAñoFiscal.CurrentRow.Cells[1].Value);
+                        dateTimePickerFechaInicial.Value = Convert.ToDateTime(dgvListaDelAñoFiscal.CurrentRow.Cells[2].Value);
+                        checkBoxActivo.Checked = Convert.ToBoolean(dgvListaDelAñoFiscal.CurrentRow.Cells[4].Value);
                         HabilitarComponentes();
                     }
                     else
@@ -129,27 +129,27 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             proveedor_de_errores.Clear();
-            if (textTituloDelAñoFinanciero.Text.Trim().Length == 0)
+            if (textTituloDelAñoFiscal.Text.Trim().Length == 0)
             {
-                proveedor_de_errores.SetError(textTituloDelAñoFinanciero, "Debe ingresar el título del año financiero");
-                textTituloDelAñoFinanciero.Focus();
+                proveedor_de_errores.SetError(textTituloDelAñoFiscal, "Debe ingresar el título del año financiero");
+                textTituloDelAñoFiscal.Focus();
                 return;
             }
 
 
-            DataTable tabladedatos = AccesoABaseDeDatos.Seleccionar("SELECT * FROM TablaAñoFinanciero WHERE AñoFinanciero = '" + textTituloDelAñoFinanciero.Text.Trim() + "'");
+            DataTable tabladedatos = AccesoABaseDeDatos.Seleccionar("SELECT * FROM TablaAñoFiscal WHERE AñoFiscal = '" + textTituloDelAñoFiscal.Text.Trim() + "'");
             if (tabladedatos != null)
             {
                 if (tabladedatos.Rows.Count > 0)
                 {
-                    proveedor_de_errores.SetError(textTituloDelAñoFinanciero, "Ya existe.");
-                    textTituloDelAñoFinanciero.Focus();
+                    proveedor_de_errores.SetError(textTituloDelAñoFiscal, "Ya existe.");
+                    textTituloDelAñoFiscal.Focus();
                     return;
                 }
             }
 
-            string insertarquery = string.Format("INSERT INTO TablaAñoFinanciero(AñoFinanciero,FechaDeInicio,FechaFinal,EstaActivo) VALUES('{0}','{1}',DATEADD(DAY,-1,(DATEADD(YY,1,'{2}'))),'{3}')",
-                                                               textTituloDelAñoFinanciero.Text.Trim(),dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"),checkBoxActivo.Checked);
+            string insertarquery = string.Format("INSERT INTO TablaAñoFiscal(AñoFiscal,FechaDeInicio,FechaFinal,EstaActivo) VALUES('{0}','{1}',DATEADD(DAY,-1,(DATEADD(YY,1,'{2}'))),'{3}')",
+                                                               textTituloDelAñoFiscal.Text.Trim(),dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"),checkBoxActivo.Checked);
 
             bool resultado = AccesoABaseDeDatos.Insertar(insertarquery);
             if (resultado)
@@ -168,27 +168,27 @@ namespace MBASistemaDeGestion.Formularios.FormulariosDeCuentas
         private void btnEditar_Click(object sender, EventArgs e)
         {
             proveedor_de_errores.Clear();
-            if (textTituloDelAñoFinanciero.Text.Trim().Length == 0)
+            if (textTituloDelAñoFiscal.Text.Trim().Length == 0)
             {
-                proveedor_de_errores.SetError(textTituloDelAñoFinanciero, "Debe ingresar el título del año financiero");
-                textTituloDelAñoFinanciero.Focus();
+                proveedor_de_errores.SetError(textTituloDelAñoFiscal, "Debe ingresar el título del año financiero");
+                textTituloDelAñoFiscal.Focus();
                 return;
             }
 
 
-            DataTable tabla_de_datos = AccesoABaseDeDatos.Seleccionar("SELECT * FROM TablaCuentaPrincipal WHERE NombreDeLaCuentaPrincipal = '" + textTituloDelAñoFinanciero.Text.Trim() + "' AND AñoFinancieroID != '"+dgvListaDelAñoFinanciero.CurrentRow.Cells[0].Value+"'");
+            DataTable tabla_de_datos = AccesoABaseDeDatos.Seleccionar("SELECT * FROM TablaCuentaPrincipal WHERE NombreDeLaCuentaPrincipal = '" + textTituloDelAñoFiscal.Text.Trim() + "' AND AñoFiscalID != '"+dgvListaDelAñoFiscal.CurrentRow.Cells[0].Value+"'");
             if (tabla_de_datos != null)
             {
                 if (tabla_de_datos.Rows.Count > 0)
                 {
-                    proveedor_de_errores.SetError(textTituloDelAñoFinanciero, "Ya existe.");
-                    textTituloDelAñoFinanciero.Focus();
+                    proveedor_de_errores.SetError(textTituloDelAñoFiscal, "Ya existe.");
+                    textTituloDelAñoFiscal.Focus();
                     return;
                 }
             }
 
-            string actualizarquery = string.Format("UPDATE TablaAñoFinanciero SET AñoFinanciero = '{0}',FechaDeInicio = '{1}',FechaFinal = DATEADD(DAY,-1,(DATEADD(YY,1,'{2}'))),EstaActivo = '{3}' WHERE AñoFinancieroID = '{4}'",
-                                                               textTituloDelAñoFinanciero.Text.Trim(), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), checkBoxActivo.Checked, dgvListaDelAñoFinanciero.CurrentRow.Cells[0].Value);
+            string actualizarquery = string.Format("UPDATE TablaAñoFiscal SET AñoFiscal = '{0}',FechaDeInicio = '{1}',FechaFinal = DATEADD(DAY,-1,(DATEADD(YY,1,'{2}'))),EstaActivo = '{3}' WHERE AñoFiscalID = '{4}'",
+                                                               textTituloDelAñoFiscal.Text.Trim(), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), dateTimePickerFechaInicial.Value.ToString("yyyy/MM/dd"), checkBoxActivo.Checked, dgvListaDelAñoFiscal.CurrentRow.Cells[0].Value);
 
             bool resultado = AccesoABaseDeDatos.Actualizar(actualizarquery);
             if (resultado)

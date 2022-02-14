@@ -37,6 +37,7 @@ namespace MBASistemaDeGestion
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,7 @@ namespace MBASistemaDeGestion
             this.controlesDeCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subcontrolDeCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.añoFinancieroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AñoFiscalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenuprincipal = new System.Windows.Forms.ToolStrip();
             this.tsbIniciarSesion = new System.Windows.Forms.ToolStripButton();
@@ -63,7 +64,6 @@ namespace MBASistemaDeGestion
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelprincipal = new System.Windows.Forms.Panel();
-            this.facturaDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menudenavegacion.SuspendLayout();
             this.tsmenuprincipal.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -122,7 +122,7 @@ namespace MBASistemaDeGestion
             this.proveedoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.añadirProveedorToolStripMenuItem});
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             // 
             // añadirProveedorToolStripMenuItem
@@ -131,6 +131,13 @@ namespace MBASistemaDeGestion
             this.añadirProveedorToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.añadirProveedorToolStripMenuItem.Text = "Añadir Proveedor";
             this.añadirProveedorToolStripMenuItem.Click += new System.EventHandler(this.añadirProveedorToolStripMenuItem_Click);
+            // 
+            // facturaDeCompraToolStripMenuItem
+            // 
+            this.facturaDeCompraToolStripMenuItem.Name = "facturaDeCompraToolStripMenuItem";
+            this.facturaDeCompraToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.facturaDeCompraToolStripMenuItem.Text = "Factura De Compra";
+            this.facturaDeCompraToolStripMenuItem.Click += new System.EventHandler(this.facturaDeCompraToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem
             // 
@@ -167,14 +174,14 @@ namespace MBASistemaDeGestion
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
@@ -194,7 +201,7 @@ namespace MBASistemaDeGestion
             this.AñadirtiposDeUsuarioToolStripMenuItem,
             this.añadirUsuariosToolStripMenuItem});
             this.ajustesDeUsuarioToolStripMenuItem.Name = "ajustesDeUsuarioToolStripMenuItem";
-            this.ajustesDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ajustesDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ajustesDeUsuarioToolStripMenuItem.Text = "Ajustes de Usuario";
             // 
             // AñadirtiposDeUsuarioToolStripMenuItem
@@ -214,7 +221,7 @@ namespace MBASistemaDeGestion
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
             // 
             // ajustesDeCuentasToolStripMenuItem
             // 
@@ -223,9 +230,9 @@ namespace MBASistemaDeGestion
             this.controlesDeCuentaToolStripMenuItem,
             this.subcontrolDeCuentaToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.añoFinancieroToolStripMenuItem});
+            this.AñoFiscalToolStripMenuItem});
             this.ajustesDeCuentasToolStripMenuItem.Name = "ajustesDeCuentasToolStripMenuItem";
-            this.ajustesDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ajustesDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ajustesDeCuentasToolStripMenuItem.Text = "Ajustes de Cuentas";
             // 
             // cuentaPrincipalToolStripMenuItem
@@ -254,12 +261,12 @@ namespace MBASistemaDeGestion
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 6);
             // 
-            // añoFinancieroToolStripMenuItem
+            // AñoFiscalToolStripMenuItem
             // 
-            this.añoFinancieroToolStripMenuItem.Name = "añoFinancieroToolStripMenuItem";
-            this.añoFinancieroToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.añoFinancieroToolStripMenuItem.Text = "Año Financiero";
-            this.añoFinancieroToolStripMenuItem.Click += new System.EventHandler(this.añoFinancieroToolStripMenuItem_Click);
+            this.AñoFiscalToolStripMenuItem.Name = "AñoFiscalToolStripMenuItem";
+            this.AñoFiscalToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.AñoFiscalToolStripMenuItem.Text = "Año Fiscal";
+            this.AñoFiscalToolStripMenuItem.Click += new System.EventHandler(this.AñoFiscalToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -345,13 +352,6 @@ namespace MBASistemaDeGestion
             this.panelprincipal.Size = new System.Drawing.Size(1280, 469);
             this.panelprincipal.TabIndex = 3;
             // 
-            // facturaDeCompraToolStripMenuItem
-            // 
-            this.facturaDeCompraToolStripMenuItem.Name = "facturaDeCompraToolStripMenuItem";
-            this.facturaDeCompraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.facturaDeCompraToolStripMenuItem.Text = "Factura De Compra";
-            this.facturaDeCompraToolStripMenuItem.Click += new System.EventHandler(this.facturaDeCompraToolStripMenuItem_Click);
-            // 
             // frmFormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -409,7 +409,7 @@ namespace MBASistemaDeGestion
         private System.Windows.Forms.ToolStripMenuItem controlesDeCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subcontrolDeCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem añoFinancieroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AñoFiscalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem añadirProveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
